@@ -48,5 +48,11 @@ public class UsersDaoImpl implements UsersDao{
 		// TODO Auto-generated method stub
 		session.update("users.update", dto);
 	}
+
+	@Override
+	public void updatePwd(UsersDto dto) {
+		// TODO Auto-generated method stub
+		session.update("users.updatePwd",dto);
+	}
 	
 }

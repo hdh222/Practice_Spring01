@@ -54,4 +54,13 @@
 		where
 			id=#{id}
 	</update>
+	
+	<update id="updatePwd" parameterType="usersDto">
+		update
+			users
+		set
+			pwd=#{newPwd}
+		where
+			id=#{id}
+	</update>
 </mapper>

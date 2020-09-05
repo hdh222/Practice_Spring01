@@ -118,4 +118,14 @@ public class UsersController {
 		return mView;
 	}
 	
+	@RequestMapping("/users/private/pwd_update")
+	public ModelAndView pwdUpdate(ModelAndView mView, UsersDto dto, HttpServletRequest request) {
+		
+		usersService.updateUserPwd(request.getSession(), dto, mView);
+		
+		mView.setViewName("redirect:/users/private/info.do");
+		
+		return mView;
+		
+	}
 }
