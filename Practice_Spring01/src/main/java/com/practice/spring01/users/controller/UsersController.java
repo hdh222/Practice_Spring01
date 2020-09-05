@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.practice.spring01.users.dto.UsersDto;
@@ -90,4 +91,31 @@ public class UsersController {
 		usersService.deleteUser(session);
 		return "redirect:/home.do";
 	}
+	
+	@RequestMapping(value = "/users/private/update_form")
+	public ModelAndView updateForm(HttpServletRequest request, ModelAndView mView) {
+		
+		usersService.getData(request.getSession(), mView);
+		mView.setViewName("users/private/update_form");
+		return mView;
+	}
+	
+	@RequestMapping(value = "/users/private/profile_upload")
+	@ResponseBody
+	public Map<String, Object> profile_upload(HttpServletRequest req, MultipartFile image){
+		
+		Map<String, Object> map = usersService.saveProfileImage(req, image);
+		
+		return map;
+	}
+	
+	@RequestMapping(value = "/users/private/update")
+	public ModelAndView update(HttpServletRequest req, ModelAndView mView, UsersDto dto) {
+		
+		
+		usersService.updateUserInfo(req.getSession(), dto);
+		mView.setViewName("redirect:/users/private/info.do");
+		return mView;
+	}
+	
 }
