@@ -1,6 +1,10 @@
 package com.practice.spring01.users.controller;
 
+import java.net.URLEncoder;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,14 +38,35 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/users/login_form")
-	public String login_form() {
+	public String login_form(HttpServletRequest req) {
+		
+		String url = req.getParameter("url");
+		if(url == null) {
+			url = req.getContextPath() + "/home.do";
+		}
+		System.out.println(url);
+		req.setAttribute("url", url);
 		
 		return "users/login_form";
 	}
 	
-	@RequestMapping(value = "users/checkid", method = RequestMethod.GET)
+	@RequestMapping(value = "/users/checkid", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> checkid(@RequestParam String inputId){
 		return usersService.checkId(inputId);
+	}
+	
+	@RequestMapping(value = "/users/login")
+	public ModelAndView login(UsersDto dto, ModelAndView mView, HttpServletRequest req) {
+		
+		String url = req.getParameter("url");
+		System.out.println(url);
+		String encodedUrl = URLEncoder.encode(url);
+		mView.addObject("url",url);
+		mView.addObject("encodedUrl", encodedUrl);
+		
+		usersService.loginProcess(dto, mView, req.getSession());
+		mView.setViewName("users/login");
+		return mView;
 	}
 }

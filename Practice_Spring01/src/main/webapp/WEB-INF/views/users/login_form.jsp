@@ -11,6 +11,7 @@
 	<div class="container">
 		<h1>로그인 폼</h1>
 		<form action="login.do" method="post">
+		<input type="hidden" name="url" value="${url }" />
 			<div class="form-group">
 				<div class="row">
 					<label for="id">아이디</label>

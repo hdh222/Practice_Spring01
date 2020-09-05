@@ -30,5 +30,18 @@ public class UsersDaoImpl implements UsersDao{
 			return true;
 		}
 	}
+
+	@Override
+	public boolean isValid(UsersDto dto) {
+		// TODO Auto-generated method stub
+		
+		String id = session.selectOne("users.isValid", dto);
+		
+		if(id == null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 	
 }
