@@ -83,4 +83,11 @@ public class UsersController {
 		mView.setViewName("users/private/info");
 		return mView;
 	}
+	
+	@RequestMapping(value = "/users/private/delete")
+	public String delete(HttpSession session) {
+		
+		usersService.deleteUser(session);
+		return "redirect:/home.do";
+	}
 }

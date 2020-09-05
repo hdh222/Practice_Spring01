@@ -9,4 +9,5 @@ public interface UsersDao {
 	public boolean checkId(String inputId);
 	public boolean isValid(UsersDto dto);
 	public UsersDto getData(String id);
+	public void delete(String id);
 }

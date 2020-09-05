@@ -13,4 +13,5 @@ public interface UsersService {
 	public Map<String, Object> checkId(String inputId);
 	public void loginProcess(UsersDto dto, ModelAndView mView, HttpSession session);
 	public void getData(HttpSession session, ModelAndView mView);
+	public void deleteUser(HttpSession session);
 }

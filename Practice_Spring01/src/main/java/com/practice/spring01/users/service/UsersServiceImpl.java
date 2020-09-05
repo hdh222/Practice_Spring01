@@ -58,6 +58,14 @@ public class UsersServiceImpl implements UsersService{
 		UsersDto dto = usersDao.getData(id);
 		mView.addObject("dto", dto);
 	}
+
+	@Override
+	public void deleteUser(HttpSession session) {
+		// TODO Auto-generated method stub
+		String id = (String)session.getAttribute("id");
+		usersDao.delete(id);
+		session.invalidate();
+	}
 	
 
 }

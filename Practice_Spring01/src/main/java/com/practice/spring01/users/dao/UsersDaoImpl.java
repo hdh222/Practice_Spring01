@@ -49,5 +49,11 @@ public class UsersDaoImpl implements UsersDao{
 		// TODO Auto-generated method stub
 		return session.selectOne("users.getData", id);
 	}
+
+	@Override
+	public void delete(String id) {
+		// TODO Auto-generated method stub
+		session.delete("users.delete", id);
+	}
 	
 }
