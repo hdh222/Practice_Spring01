@@ -21,7 +21,9 @@
 			<a href="logout.do">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
-	
+	<ul>
+		<li><a href="file/list.do">자료실 목록 보기</a></li>
+	</ul>
 	
 </body>
 </html>

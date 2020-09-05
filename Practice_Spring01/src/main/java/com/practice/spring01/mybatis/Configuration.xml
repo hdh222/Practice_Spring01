@@ -5,10 +5,12 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.practice.spring01.users.dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.practice.spring01.file.dto.FileDto" alias="fileDto"/>
 	</typeAliases>
 	
 
 	<mappers>
 		<mapper resource="com/practice/spring01/mybatis/UsersMapper.xml"></mapper>
+		<mapper resource="com/practice/spring01/mybatis/FileMapper.xml"></mapper>
 	</mappers>
 </configuration>
