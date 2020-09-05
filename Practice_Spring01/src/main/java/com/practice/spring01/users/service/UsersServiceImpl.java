@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,13 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public void addUser(UsersDto dto) {
 		// TODO Auto-generated method stub
+		String inputPwd = dto.getPwd();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		String encodedPwd = encoder.encode(inputPwd);
+		
+		dto.setPwd(encodedPwd);
+		
 		usersDao.insert(dto);
 	}
 
