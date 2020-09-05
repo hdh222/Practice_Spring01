@@ -69,4 +69,11 @@ public class UsersController {
 		mView.setViewName("users/login");
 		return mView;
 	}
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		
+		session.invalidate();
+		
+		return "redirect:/home.do";
+	}
 }

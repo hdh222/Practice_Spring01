@@ -18,7 +18,7 @@
 		</c:when>
 		<c:otherwise>
 			<strong>${id }</strong> 로그인 중
-			<a href="users/logout.do">로그아웃</a>
+			<a href="logout.do">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
 	
