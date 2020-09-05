@@ -27,15 +27,6 @@
 			id=#{inputid}
 	</select>
 	
-	<select id="isValid" parameterType="usersDto" resultType="string">
-		select
-			id
-		from
-			users
-		where
-			id=#{id} and pwd=#{pwd}
-	</select>
-	
 	<select id="getData" parameterType="string" resultType="usersDto">
 		select
 			id,

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -52,8 +53,17 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public void loginProcess(UsersDto dto, ModelAndView mView, HttpSession session) {
 		// TODO Auto-generated method stub
-		boolean isValid = usersDao.isValid(dto);
 		
+		boolean isValid = false;
+		
+		UsersDto resultDto = usersDao.getData(dto.getId());
+		
+		if(resultDto != null) {
+			String encodedPwd = resultDto.getPwd();
+			String inputPwd = dto.getPwd();
+			isValid = BCrypt.checkpw(inputPwd, encodedPwd);
+		}
+
 		if(isValid) {
 			session.setAttribute("id", dto.getId());
 			mView.addObject("isSuccess", true);
