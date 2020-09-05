@@ -49,6 +49,15 @@ public class UsersServiceImpl implements UsersService{
 			mView.addObject("isSuccess", false);
 		}
 	}
+
+	@Override
+	public void getData(HttpSession session, ModelAndView mView) {
+		// TODO Auto-generated method stub
+		String id = (String)session.getAttribute("id");
+		
+		UsersDto dto = usersDao.getData(id);
+		mView.addObject("dto", dto);
+	}
 	
 
 }

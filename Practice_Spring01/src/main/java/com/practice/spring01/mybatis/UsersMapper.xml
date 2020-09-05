@@ -35,4 +35,17 @@
 		where
 			id=#{id} and pwd=#{pwd}
 	</select>
+	
+	<select id="getData" parameterType="string" resultType="usersDto">
+		select
+			id,
+			pwd,
+			email,
+			profile,
+			to_char(regdate, 'yy.mm.dd HH24:mi') as regdate
+		from
+			users
+		where
+			id=#{id}
+	</select>
 </mapper>

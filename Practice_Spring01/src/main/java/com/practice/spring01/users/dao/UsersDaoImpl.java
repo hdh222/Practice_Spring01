@@ -43,5 +43,11 @@ public class UsersDaoImpl implements UsersDao{
 			return true;
 		}
 	}
+
+	@Override
+	public UsersDto getData(String id) {
+		// TODO Auto-generated method stub
+		return session.selectOne("users.getData", id);
+	}
 	
 }

@@ -76,4 +76,11 @@ public class UsersController {
 		
 		return "redirect:/home.do";
 	}
+	@RequestMapping(value = "/users/private/info")
+	public ModelAndView getData(HttpSession session, ModelAndView mView) {
+		
+		usersService.getData(session, mView);
+		mView.setViewName("users/private/info");
+		return mView;
+	}
 }

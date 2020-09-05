@@ -17,7 +17,7 @@
 			<a href="users/signup_form.do">회원가입</a>
 		</c:when>
 		<c:otherwise>
-			<strong>${id }</strong> 로그인 중
+			<a href="users/private/info.do"><strong>${id }</strong></a> 로그인 중
 			<a href="logout.do">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
