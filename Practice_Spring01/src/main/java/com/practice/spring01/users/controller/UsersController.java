@@ -1,9 +1,13 @@
 package com.practice.spring01.users.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.practice.spring01.users.dto.UsersDto;
@@ -33,5 +37,11 @@ public class UsersController {
 	public String login_form() {
 		
 		return "users/login_form";
+	}
+	
+	@RequestMapping(value = "users/checkid", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> checkid(@RequestParam String inputId){
+		return usersService.checkId(inputId);
 	}
 }

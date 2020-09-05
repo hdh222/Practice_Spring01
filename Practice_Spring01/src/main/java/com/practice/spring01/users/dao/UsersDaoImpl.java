@@ -17,5 +17,18 @@ public class UsersDaoImpl implements UsersDao{
 		// TODO Auto-generated method stub
 		session.insert("users.insert", dto);
 	}
+
+	@Override
+	public boolean checkId(String inputId) {
+		// TODO Auto-generated method stub
+		
+		String id = session.selectOne("users.isExist", inputId);
+		
+		if(id == null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 	
 }

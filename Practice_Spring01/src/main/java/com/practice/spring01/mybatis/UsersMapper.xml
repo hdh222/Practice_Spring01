@@ -17,4 +17,13 @@
 			sysdate
 		)
 	</insert>
+	
+	<select id="isExist" parameterType="string" resultType="string">
+		select
+			id
+		from
+			users
+		where
+			id=#{inputid}
+	</select>
 </mapper>
