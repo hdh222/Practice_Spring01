@@ -18,6 +18,7 @@ public class FileController {
 	@RequestMapping(value = "/file/list")
 	public ModelAndView list(HttpServletRequest request, ModelAndView mView) {
 		
+		fileService.getList(request);
 		mView.setViewName("file/list");
 		return mView;
 	}
