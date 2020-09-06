@@ -1,5 +1,7 @@
 package com.practice.spring01.file.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class FileDto {
 	private int num;
 	private String writer;
@@ -7,14 +9,17 @@ public class FileDto {
 	private String orgFileName;
 	private String saveFileName;
 	private long fileSize;
+	private String regdate;
 	
 	private int startRowNum;
 	private int endRowNum;
 	
+	private MultipartFile myFile;
+	
 	public FileDto() {}
 
 	public FileDto(int num, String writer, String title, String orgFileName, String saveFileName, long fileSize,
-			int startRowNum, int endRowNum) {
+			String regdate, int startRowNum, int endRowNum, MultipartFile myFile) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -22,8 +27,10 @@ public class FileDto {
 		this.orgFileName = orgFileName;
 		this.saveFileName = saveFileName;
 		this.fileSize = fileSize;
+		this.regdate = regdate;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+		this.myFile = myFile;
 	}
 
 	public int getNum() {
@@ -74,6 +81,14 @@ public class FileDto {
 		this.fileSize = fileSize;
 	}
 
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
 	public int getStartRowNum() {
 		return startRowNum;
 	}
@@ -89,6 +104,16 @@ public class FileDto {
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
 	}
+
+	public MultipartFile getMyFile() {
+		return myFile;
+	}
+
+	public void setMyFile(MultipartFile myFile) {
+		this.myFile = myFile;
+	}
+
+	
 	
 	
 }
