@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.practice.spring01.file.dto.FileDto;
@@ -37,6 +38,14 @@ public class FileController {
 			HttpServletRequest request) {
 		fileService.saveFile(dto, mView, request);
 		mView.setViewName("file/private/upload");
+		return mView;
+	}
+	@RequestMapping(value = "/file/download")
+	public ModelAndView download(@RequestParam int num, ModelAndView mView) {
+		
+		
+		fileService.getFileData(num, mView);
+		mView.setViewName("file/download");
 		return mView;
 	}
 }

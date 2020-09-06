@@ -31,6 +31,12 @@ public class FileDaoImpl implements FileDao{
 		// TODO Auto-generated method stub
 		session.insert("file.insert", dto);
 	}
+
+	@Override
+	public FileDto getData(int num) {
+		// TODO Auto-generated method stub
+		return session.selectOne("file.getData", num);
+	}
 	
 	
 }
